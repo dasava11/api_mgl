@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      rol: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       img: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -29,7 +33,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-
+      linkedin: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       active: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
