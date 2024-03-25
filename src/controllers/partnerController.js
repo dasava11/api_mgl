@@ -1,5 +1,6 @@
 const { Partner } = require("../db");
 const { Op } = require("sequelize");
+
 const getAllPartners = async (req, res) => {
   try {
     const partners = await Partner.findAll();
@@ -59,6 +60,7 @@ const postPartner = async (req, res) => {
 
     await Partner.create({
       name,
+      rol,
       img,
       specialty,
     });
