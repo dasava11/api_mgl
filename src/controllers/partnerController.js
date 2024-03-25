@@ -65,6 +65,7 @@ const postPartner = async (req, res) => {
       img,
       specialty,
       description,
+      linkedin,
     });
 
     return res.status(201).json({ message: `${name} fue creado con éxito!` });
