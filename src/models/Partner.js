@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       description: {
-        type: DataTypes.STRING(280),
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       linkedin: {
