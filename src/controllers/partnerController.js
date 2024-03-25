@@ -60,9 +60,11 @@ const postPartner = async (req, res) => {
 
     await Partner.create({
       name,
+      email,
       rol,
       img,
       specialty,
+      description,
     });
 
     return res.status(201).json({ message: `${name} fue creado con éxito!` });
