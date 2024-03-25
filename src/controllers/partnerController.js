@@ -1,5 +1,5 @@
 const { Partner } = require("../db");
-
+const { Op } = require("sequelize");
 const getAllPartners = async (req, res) => {
   try {
     const partners = await Partner.findAll();
