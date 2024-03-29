@@ -3,7 +3,7 @@ const { Router } = require("express");
 const {
   getAllContacts,
   getContactById,
-  postContact
+  postContact,
   deleteContact,
 } = require("../controllers/contactController");
 
