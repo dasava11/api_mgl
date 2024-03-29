@@ -33,7 +33,7 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Partner } = sequelize.models;
+const { Partner, Contacts } = sequelize.models;
 
 module.exports = {
   ...sequelize.models,
