@@ -17,6 +17,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      rolES: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       img: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -30,6 +34,14 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      specialtyES: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      descriptionES: {
         type: DataTypes.TEXT,
         allowNull: true,
       },
