@@ -39,10 +39,20 @@ const getPartnerById = async (req, res) => {
 
 const postPartner = async (req, res) => {
   try {
-    const { name, rol, email, img, specialty, linkedin, description } =
-      req.body;
+    const {
+      name,
+      rol,
+      email,
+      img,
+      specialty,
+      linkedin,
+      description,
+      specialtyES,
+      rolES,
+      descriptionES,
+    } = req.body;
 
-    if (!name || !img || !specialty || !rol) {
+    if (!name || !img || !specialty || !rol || !rolES || !specialtyES) {
       return res.status(500).json({ message: "Falta información" });
     }
 
@@ -66,6 +76,9 @@ const postPartner = async (req, res) => {
       specialty,
       description,
       linkedin,
+      specialtyES,
+      rolES,
+      descriptionES,
     });
 
     return res.status(201).json({ message: `${name} fue creado con éxito!` });
@@ -85,6 +98,9 @@ const putPartner = async (req, res) => {
       specialty,
       linkedin,
       description,
+      specialtyES,
+      rolES,
+      descriptionES,
     } = req.body;
 
     const existingPartner = await Partner.findByPk(partner_id);
@@ -102,7 +118,9 @@ const putPartner = async (req, res) => {
     if (rol) {
       await existingPartner.update({ rol });
     }
-
+    if (rolES) {
+      await existingPartner.update({ rolES });
+    }
     if (email) {
       await existingPartner.update({ email });
     }
@@ -113,11 +131,17 @@ const putPartner = async (req, res) => {
     if (specialty) {
       await existingPartner.update({ specialty });
     }
+    if (specialtyES) {
+      await existingPartner.update({ specialtyES });
+    }
     if (linkedin) {
       await existingPartner.update({ linkedin });
     }
     if (description) {
       await existingPartner.update({ description });
+    }
+    if (descriptionES) {
+      await existingPartner.update({ descriptionES });
     }
 
     return res
