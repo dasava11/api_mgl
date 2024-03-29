@@ -37,6 +37,39 @@ const getContactById = async (req, res) => {
   }
 };
 
+const postContact = async (req, res) => {
+  try {
+    const { name, phone, email, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(500).json({ message: "Falta información" });
+    }
+
+    const existingContact = await Contact.findOne({
+      where: {
+        name: {
+          [Op.iLike]: name,
+        },
+      },
+    });
+
+    if (existingContact) {
+      return res.status(500).json({ message: `${name} ya existe` });
+    }
+
+    await Contact.create({
+      name,
+      phone,
+      email,
+      message,
+    });
+
+    return res.status(201).json({ message: `${name} fue creado con éxito!` });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 const deleteContact = async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,5 +105,6 @@ const deleteContact = async (req, res) => {
 module.exports = {
   getAllContacts,
   getContactById,
+  postContact,
   deleteContact,
 };
