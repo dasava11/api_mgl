@@ -5,7 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_URL } = process.env;
 
 const sequelize = new Sequelize(
-  /* `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, */
+  //`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
   DB_URL,
   {
     logging: false,
