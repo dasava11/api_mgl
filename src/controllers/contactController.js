@@ -1,9 +1,9 @@
-const { Contacts } = require("../db");
+const { Contact } = require("../db");
 const { Op, Model } = require("sequelize");
 
 const getAllContacts = async (req, res) => {
   try {
-    const contacts = await Contacts.findAll();
+    const contacts = await Contact.findAll();
 
     if (contacts.length === 0) {
       return res.status(404).json({ message: "No se encontraron clientes" });
@@ -23,7 +23,7 @@ const getContactById = async (req, res) => {
       return res.status(500).json({ message: "No se envió un id" });
     }
 
-    const contactById = await Contacts.findByPk(id);
+    const contactById = await Contact.findByPk(id);
 
     if (!contactById) {
       return res
@@ -45,7 +45,7 @@ const deleteContact = async (req, res) => {
       return res.status(400).json({ message: "No se envió un id" });
     }
 
-    const existingContact = await Contacts.findByPk(id);
+    const existingContact = await Contact.findByPk(id);
 
     if (!existingContact) {
       return res
