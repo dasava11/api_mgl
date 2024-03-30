@@ -39,32 +39,34 @@ const getContactById = async (req, res) => {
 
 const postContact = async (req, res) => {
   try {
-    const { name, phone, email, message } = req.body;
+    const { user_name, phone, user_email, message } = req.body;
 
-    if (!name || !email || !message) {
+    if (!user_name || !user_email || !message) {
       return res.status(500).json({ message: "Falta información" });
     }
 
     const existingContact = await Contact.findOne({
       where: {
         name: {
-          [Op.iLike]: name,
+          [Op.iLike]: user_name,
         },
       },
     });
 
     if (existingContact) {
-      return res.status(500).json({ message: `${name} ya existe` });
+      return res.status(500).json({ message: `${user_name} ya existe` });
     }
 
     await Contact.create({
-      name,
+      user_name,
       phone,
-      email,
+      user_email,
       message,
     });
 
-    return res.status(201).json({ message: `${name} fue creado con éxito!` });
+    return res
+      .status(201)
+      .json({ message: `${user_name} fue creado con éxito!` });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -89,13 +91,13 @@ const deleteContact = async (req, res) => {
     if (existingContact.active === true) {
       await existingContact.update({ active: false });
       return res.status(200).json({
-        message: `${existingContact.name} fue borrado exitosamente`,
+        message: `${existingContact.user_name} fue borrado exitosamente`,
       });
     } else {
       await existingContact.update({ active: true });
-      return res
-        .status(200)
-        .json({ message: `${existingContact.name} fue activado exitosamente` });
+      return res.status(200).json({
+        message: `${existingContact.user_name} fue activado exitosamente`,
+      });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });
