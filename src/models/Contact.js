@@ -9,18 +9,16 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: UUIDV4,
       },
-      userName: {
+      user_name: {
         type: DataTypes.STRING,
-        field: "user_name",
         allowNull: false,
       },
       phone: {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      userEmail: {
+      user_email: {
         type: DataTypes.STRING,
-        field: "user_email",
         allowNull: false,
       },
       message: {
