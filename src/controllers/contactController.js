@@ -47,7 +47,7 @@ const postContact = async (req, res) => {
 
     const existingContact = await Contact.findOne({
       where: {
-        name: {
+        user_name: {
           [Op.iLike]: user_name,
         },
       },
