@@ -14,7 +14,7 @@ router
   .get("/", getAllPartners)
   .get("/id/:id", getPartnerById)
   .post("/", postPartner)
-  .put("/edit/:id", putPartner)
+  .put("/edit/", putPartner)
   .put("/delete/:id", deletePartner);
 
 module.exports = router;
