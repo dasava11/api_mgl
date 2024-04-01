@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: UUIDV4,
       },
-      name: {
+      user_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      email: {
+      user_email: {
         type: DataTypes.STRING,
         allowNull: false,
       },
